@@ -1,5 +1,5 @@
 import {useCart} from '@/context/CartProvider';
-import Image from 'next/image';
+
 import {Button} from '@/components/shared/button';
 import {CheckoutStep} from './CheckoutPage';
 import {useState} from 'react';
@@ -15,14 +15,14 @@ export function CampaignCodeButton() {
   const handleApplyCode = () => {
     if (!campaignCode.trim()) return;
     console.log('Applying campaign code:', campaignCode);
-    // Here you would send the code to the backend
+
   };
 
   return (
     <AccordionSection
       title='LÄGG TILL KAMPANJKOD'
       defaultOpen={false}
-      className='border text-sm my-3 md:my-0 hover:border-gray-600 border-gray-200 overflow-hidden'
+      className='border text-sm my-3 md:my-0 border-gray-400   overflow-hidden'
       headerClassName='flex justify-between items-center p-3 cursor-pointer'
       contentClassName='p-3 space-y-3'
     >
@@ -36,7 +36,7 @@ export function CampaignCodeButton() {
       <Button
         type='button'
         variant='outline'
-        className='w-full mt-2 border-gray-400 hover:border-gray-600 shadow-none hover:bg-white'
+        className='w-full mt-2 border-gray-400 active:border-gray-600 hover:border-gray-600 shadow-none hover:bg-white'
         onClick={handleApplyCode}
       >
         Använd kod
@@ -74,7 +74,7 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({currentStep, onNext}: OrderSummaryProps) {
-  // This component is now only used for desktop view
+
   return (
     <div className='hidden md:block bg-white  '>
       <h2 className='text-lg font-medium mb-4'>Varukorg</h2>

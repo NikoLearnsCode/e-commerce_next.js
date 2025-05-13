@@ -38,40 +38,17 @@ export default function EmptyCart({
       </h2>
 
       <Link
-        className='text-sm text-primary font-medium hover:underline flex justify-center gap-1 items-center mt-4 group tracking-wider mx-auto text-center'
+        className='text-sm text-primary font-medium active:underline hover:underline flex justify-center gap-1 items-center mt-4 group tracking-wider mx-auto text-center'
         href='/'
       >
         <GoArrowLeft
           size={16}
-          className='group-hover:-translate-x-2 transition-transform duration-300 mr-1'
+          className='group-active:-translate-x-2 group-hover:-translate-x-2 transition-transform duration-300 mr-1'
         />
         Fortsätt handla
       </Link>
 
-      {/* <div className='flex justify-center items-center gap-6 font-syne uppercase '>
-      <Link
-        className='text-lg text-primary font-semibold hover:underline flex justify-center gap-1 items-center mt-4 group tracking-wider mx-auto text-center'
-        href='/c/dam'
-      >
-        <GoArrowLeft
-          size={22}
-          className='group-hover:-translate-x-2 transition-transform duration-300 mr-1'
-        />
-        Dam
-      </Link>
-      <Link
-        className='text-lg text-primary font-semibold hover:underline flex justify-center gap-1 items-center mt-4 group tracking-wider mx-auto text-center'
-        href='/c/herr'
-      >
-        
-        Herr
-        <GoArrowRight
-          size={22}
-          className='group-hover:translate-x-2 transition-transform duration-300 ml-1'
-        />
-      </Link>
-     
-      </div> */}
+ 
     </div>
   );
 }

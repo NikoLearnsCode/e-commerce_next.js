@@ -10,7 +10,6 @@ import Newsletter from '@/components/shared/Newsletter';
 import MobileImageSwiper from './MobileImageSwiper';
 import dynamic from 'next/dynamic';
 
-
 // Dynamically import the carousels
 const ProductCarousel = dynamic(
   () => import('@/components/products/product-detail/CarouselOne')
@@ -85,7 +84,7 @@ export default function product({
           </div>
 
           {/* Right column - product info */}
-          <div className='flex flex-col lg:pt-16 px-6 lg:mr-12 sticky top-18 h-full  sm:px-5 gap-3 lg:gap-1 mb-12  lg:w-[35%] transition-all duration-300'>
+          <div className='flex flex-col lg:pt-24 px-6 lg:mr-12 sticky top-18 h-full  sm:px-5 gap-3 lg:gap-1 mb-12  lg:w-[35%] transition-all duration-300'>
             {/* Product name */}
             <div>
               <h1 className='text-xl lg:text-2xl mt-4 font-medium'>
@@ -123,7 +122,7 @@ export default function product({
                   <button
                     key={size}
                     className={twMerge(
-                      'h-12 w-16 p-0 m-0 border appearance-none text-sm font-medium hover:border-black transition border-gray-200 cursor-pointer',
+                      'h-12 w-16 p-0 m-0 border appearance-none text-sm font-medium hover:border-black active:border-black transition border-gray-200 cursor-pointer',
                       selectedSize === size
                         ? 'border border-black bg-gray-100'
                         : ''

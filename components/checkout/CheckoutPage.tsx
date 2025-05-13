@@ -32,12 +32,12 @@ export default function CheckoutPage() {
           Din varukorg är tom
         </h2>
         <Link
-          className='text-sm text-primary font-medium hover:underline flex justify-center gap-1 items-center mt-4 group tracking-wider mx-auto text-center'
+          className='text-sm text-primary font-medium active:underline hover:underline flex justify-center gap-1 items-center mt-4 group tracking-wider mx-auto text-center'
           href='/'
         >
           <GoArrowLeft
             size={16}
-            className='group-hover:-translate-x-2 transition-transform duration-300 mr-1'
+            className='group-active:-translate-x-2 group-hover:-translate-x-2 transition-transform duration-300 mr-1'
           />
           Fortsätt handla
         </Link>

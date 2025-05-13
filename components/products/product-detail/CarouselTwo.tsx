@@ -83,6 +83,10 @@ export default function ProductTwo({
             slidesPerView: 4,
             spaceBetween: 4,
           },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 4,
+          },
         }}
         onSlideChange={handleSlideChange}
         onInit={handleSlideChange}

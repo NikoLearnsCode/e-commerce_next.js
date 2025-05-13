@@ -86,6 +86,10 @@ export default function ProductCarousel({
             slidesPerView: 4,
             spaceBetween: 4,
           },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 4,
+          },
         }}
         navigation={{
           prevEl: `.${prevButtonClass}`,
