@@ -47,7 +47,7 @@ export default function DesktopNav({navLinks}: DesktopNavProps) {
         if (candidateRef.current === index) {
           setHoveredIndex(index);
         }
-      }, 300);
+      }, 500);
     } else {
       setHoveredIndex(index);
     }
@@ -66,7 +66,7 @@ export default function DesktopNav({navLinks}: DesktopNavProps) {
   };
 
   const handleClick = () => {
-    setTimeout(() => closeDropdown(), 200);
+    setTimeout(() => closeDropdown(), 300);
   };
 
   useEffect(() => {

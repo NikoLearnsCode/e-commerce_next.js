@@ -85,7 +85,8 @@ function PasswordResetForm() {
               Skickar...
             </>
           ) : (
-            'Skicka återställningslänk'
+            // 'Skicka återställningslänk'
+            'Tillfälligt inaktiverad'
           )}
         </Button>
       </form>

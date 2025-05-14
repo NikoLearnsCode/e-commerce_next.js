@@ -145,7 +145,7 @@ function SignInFormContent() {
           </div>
           <div className='flex justify-end'>
             <Link
-              className={`${isPending ? 'pointer-events-none opacity-50' : ''} text-xs text-primary font-medium underline`}
+              className={`${isPending ? 'pointer-events-none opacity-50' : ''} text-xs mt-1 text-primary font-medium underline`}
               href={
                 source === 'checkout'
                   ? '/forgot-password?source=checkout'

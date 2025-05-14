@@ -171,8 +171,8 @@ const baseProducts = [
     images: [
       '/images/dam/jackor/jacka-dam1.webp',
       '/images/dam/jackor/jacka-dam2.webp',
+      '/images/dam/jackor/jacka-dam3.webp',
       '/images/dam/jackor/jacka-dam1.webp',
-      '/images/dam/jackor/jacka-dam2.webp',
     ],
     sizes: ['32', '34', '36', '38', '40', '42', '44'],
   },

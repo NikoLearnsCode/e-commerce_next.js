@@ -96,15 +96,15 @@ export function ProductListDropdown({
                       <p className='text-sm text-gray-600'>
                         {item.price * item.quantity} kr
                       </p>
-                      {/* {itemCount > 1 && ( */}
+                      {cartItems.length > 1 && (
                       <button
                         className={`font-medium mr-3 transition border-gray-400 text-black hover:text-red-700 hover:border-red-700  text-xs border-b disabled:opacity-50 cursor-pointer ${removingItems[item.id] ? 'text-red-700 border-red-700 hover:border-red-700' : ''}`}
                         onClick={() => handleRemoveItem(item.id)}
                         disabled={removingItems[item.id]}
                       >
                         {removingItems[item.id] ? 'Tar bort' : 'Ta bort'}
-                      </button>
-                      {/* // )} */}
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
