@@ -80,7 +80,7 @@ export function Accordion({
           setOpenSection(openSection === sectionId ? null : sectionId);
         },
 
-        id: sectionId, // Ensure ID is passed down
+        id: sectionId, 
       });
     }
 
@@ -95,7 +95,7 @@ export default function AccordionSection({
   selected,
   children,
   defaultOpen = false,
-  isControlled = false,
+  isControlled: isControlledProp = false,
   isOpen: controlledIsOpen,
   onToggle,
 
@@ -107,11 +107,20 @@ export default function AccordionSection({
 }: AccordionSectionProps) {
   const [isOpenInternal, setIsOpenInternal] = useState(defaultOpen);
 
-  // Use controlled or uncontrolled state based on props
-  const isOpen = isControlled ? controlledIsOpen : isOpenInternal;
-  const toggleOpen = isControlled
+  const isEffectivelyControlled =
+    controlledIsOpen !== undefined || isControlledProp;
+
+  const isOpen = isEffectivelyControlled ? controlledIsOpen : isOpenInternal;
+  const toggleOpen = isEffectivelyControlled
     ? onToggle
     : () => setIsOpenInternal(!isOpenInternal);
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleOpen?.();
+    }
+  };
 
   return (
     <div className={className} data-section-id={id}>
@@ -120,6 +129,10 @@ export default function AccordionSection({
         initial={false}
         className={headerClassName}
         onClick={toggleOpen}
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        role='button'
+        aria-expanded={isOpen}
       >
         {typeof title === 'string' ? (
           <span>

@@ -6,24 +6,25 @@ import {useState} from 'react';
 import AccordionSection from '@/components/shared/Accordion';
 import {FloatingLabelInput} from '@/components/shared/floatingLabelInput';
 import {ProductListDesktop} from './ProductList';
-import { formatPrice } from '@/lib/utils';
+import {formatPrice} from '@/lib/utils';
 
 // Separate component for the campaign code button
 export function CampaignCodeButton() {
   const [campaignCode, setCampaignCode] = useState('');
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
   const handleApplyCode = () => {
     if (!campaignCode.trim()) return;
     console.log('Applying campaign code:', campaignCode);
-
   };
 
   return (
     <AccordionSection
       title='LÄGG TILL KAMPANJKOD'
-      defaultOpen={false}
-      className='border text-sm my-3 md:my-0 border-gray-400   overflow-hidden'
-      headerClassName='flex justify-between items-center p-3 cursor-pointer'
+      isOpen={isAccordionOpen}
+      onToggle={() => setIsAccordionOpen(!isAccordionOpen)}
+      className={`text-sm my-3 md:my-0 border ${isAccordionOpen ? 'border-gray-600' : 'border-gray-200'} overflow-hidden`}
+      headerClassName='flex justify-between  items-center p-3 cursor-pointer'
       contentClassName='p-3 space-y-3'
     >
       <FloatingLabelInput
@@ -74,7 +75,6 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({currentStep, onNext}: OrderSummaryProps) {
-
   return (
     <div className='hidden md:block bg-white  '>
       <h2 className='text-lg font-medium mb-4'>Varukorg</h2>

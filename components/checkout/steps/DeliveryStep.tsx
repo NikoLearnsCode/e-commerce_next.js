@@ -66,6 +66,15 @@ export default function DeliveryStep({onNext, initialData}: DeliveryStepProps) {
             <div
               className={`flex h-16 justify-center items-center p-2 w-full border  hover:border-black cursor-pointer transition-colors duration-200 ${selectedMethod === 'home' ? 'border-black bg-gray-50' : 'border-gray-300'}`}
               onClick={() => selectDeliveryMethod('home')}
+              tabIndex={0}
+              role='radio'
+              aria-checked={selectedMethod === 'home'}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  selectDeliveryMethod('home');
+                }
+              }}
             >
               <input
                 type='radio'
@@ -88,6 +97,15 @@ export default function DeliveryStep({onNext, initialData}: DeliveryStepProps) {
             <div
               className={`flex h-16 justify-center items-center p-2 w-full border  hover:border-black cursor-pointer transition-colors duration-200 ${selectedMethod === 'pickup' ? 'border-black bg-gray-50' : 'border-gray-300'}`}
               onClick={() => selectDeliveryMethod('pickup')}
+              tabIndex={0}
+              role='radio'
+              aria-checked={selectedMethod === 'pickup'}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  selectDeliveryMethod('pickup');
+                }
+              }}
             >
               <input
                 type='radio'

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import {Link} from '@/components/shared/link';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 export default function Homepage() {
   const [currentView, setCurrentView] = useState<'dam' | 'herr'>('dam');
@@ -11,6 +11,14 @@ export default function Homepage() {
   const herrDesktopImage = '/images/LP.HERR.avif';
   const damMobileImage = '/images/LP.DAM.MOBILE.avif';
   const herrMobileImage = '/images/LP.HERR.MOBILE.avif';
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentView((prevView) => (prevView === 'dam' ? 'herr' : 'dam'));
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className='relative'>
@@ -66,31 +74,19 @@ export default function Homepage() {
         </div>
       </div>
 
-      <div className='absolute left-0 top-3/4 w-full px-6'>
+      <div className='absolute left-0 top-5/8 w-full px-6'>
         <div className='flex justify-center items-center space-x-5 font-syne uppercase'>
           <Link
-            variant={currentView === 'dam' ? 'primaryTwo' : 'secondaryTwo'}
+            variant='secondaryTwo'
             href='/c/dam'
             className='w-full sm:w-40 text-base font-black transition-all duration-500'
-            onPointerEnter={(e) => {
-              if (e.pointerType === 'mouse') {
-                setCurrentView('dam');
-              }
-            }}
-            onTouchStart={() => setCurrentView('dam')}
           >
             dam
           </Link>
           <Link
-            variant={currentView === 'herr' ? 'primaryTwo' : 'secondaryTwo'}
+            variant='primaryTwo'
             href='/c/herr'
             className='w-full sm:w-40 text-base font-black transition-all duration-500'
-            onPointerEnter={(e) => {
-              if (e.pointerType === 'mouse') {
-                setCurrentView('herr');
-              }
-            }}
-            onTouchStart={() => setCurrentView('herr')}
           >
             herr
           </Link>

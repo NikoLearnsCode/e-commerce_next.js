@@ -297,8 +297,15 @@ function CheckboxOption({
   checked: boolean;
   onChange: () => void;
 }) {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      onChange();
+    }
+  };
+
   return (
-    <label htmlFor={id} className='flex items-center space-x-2'>
+    <label htmlFor={id} className='flex items-center space-x-2 cursor-pointer'>
       <div className='relative'>
         <input
           type='checkbox'
@@ -308,7 +315,11 @@ function CheckboxOption({
           className='sr-only'
         />
         <div
-          className={`w-5 h-5  border ${checked ? ' border-black' : 'border-gray-300'} flex items-center justify-center`}
+          className={`w-5 h-5 border ${checked ? 'border-black' : 'border-gray-300'} flex items-center justify-center`}
+          tabIndex={0}
+          onKeyDown={handleKeyDown}
+          role='checkbox'
+          aria-checked={checked}
         >
           {checked && (
             <svg
@@ -344,8 +355,15 @@ function RadioOption({
   checked: boolean;
   onChange: () => void;
 }) {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      onChange();
+    }
+  };
+
   return (
-    <label htmlFor={id} className='flex items-center space-x-2'>
+    <label htmlFor={id} className='flex items-center space-x-2 cursor-pointer'>
       <div className='relative'>
         <input
           type='radio'
@@ -355,7 +373,11 @@ function RadioOption({
           className='sr-only'
         />
         <div
-          className={`w-5 h-5  border ${checked ? ' border-black' : 'border-gray-300'} flex items-center justify-center`}
+          className={`w-5 h-5 border ${checked ? 'border-black' : 'border-gray-300'} flex items-center justify-center`}
+          tabIndex={0}
+          onKeyDown={handleKeyDown}
+          role='radio'
+          aria-checked={checked}
         >
           {checked && (
             <svg

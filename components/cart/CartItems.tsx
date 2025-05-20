@@ -163,9 +163,9 @@ export default function CartItems({compact = false}: CartItemsProps) {
               </div>
 
               {/* Content section */}
-              <div className='px-4 py-3  lg:pb-10 lg:px-6 flex-1 flex flex-col justify-between mb-2'>
-                <div className='flex flex-col flex-1 gap-2 lg:gap-1 text-xs  md:text-sm  font-semibold text-gray-900'>
-                  <h2 className=' text-sm sm:text-base lg:text-xl font-semibold text-gray-900'>
+              <div className='px-4 py-3 relative lg:pb-10 lg:px-6 flex-1 flex flex-col justify-between mb-2'>
+                <div className='flex flex-col flex-1 gap-2 lg:gap-1 text-xs    font-semibold text-gray-900'>
+                  <h2 className=' text-sm sm:text-base  font-semibold text-gray-900'>
                     {item.name}
                   </h2>
                   <p className=' font-semibold uppercase font-syne text-gray-600 '>
@@ -196,7 +196,7 @@ export default function CartItems({compact = false}: CartItemsProps) {
                 </div>
 
                 {/* Quantity controls */}
-                <div className='text-sm mt-3 md:text-base flex  items-center space-x-3'>
+                <div className='text-sm mt-1 sm:absolute sm:top-1 sm:right-3 md:text-base flex  items-center space-x-3'>
                   <button
                     onClick={() =>
                       handleUpdateQuantity(item.id, item.quantity - 1)

@@ -13,6 +13,8 @@ import {MotionCloseX} from '../header/AnimatedDropdown';
 
 export default function CartDropdown() {
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const cartButtonRef = useRef<HTMLButtonElement>(null);
+
   const {
     cartItems,
     loading: isLoading,
@@ -23,11 +25,18 @@ export default function CartDropdown() {
     itemCount,
   } = useCart();
 
+  const triggerCloseCartAndRestoreFocus = () => {
+    closeCart();
+    cartButtonRef.current?.focus();
+  };
+
   useEffect(() => {
     if (isCartOpen) {
+      dropdownRef.current?.focus();
+
       const handleEscape = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
-          closeCart();
+          triggerCloseCartAndRestoreFocus();
         }
       };
       document.addEventListener('keydown', handleEscape);
@@ -36,15 +45,24 @@ export default function CartDropdown() {
         document.removeEventListener('keydown', handleEscape);
       };
     }
-  }, [isCartOpen, closeCart]);
+  }, [isCartOpen]);
 
   useEffect(() => {
+    if (!isCartOpen) return;
+
     const handleClickOutside = (event: MouseEvent) => {
+      if (
+        cartButtonRef.current &&
+        cartButtonRef.current.contains(event.target as Node)
+      ) {
+        return;
+      }
+
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        closeCart();
+        triggerCloseCartAndRestoreFocus();
       }
     };
 
@@ -52,20 +70,23 @@ export default function CartDropdown() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [isCartOpen]);
 
   return (
-    <div className='relative' ref={dropdownRef}>
+    <div className='relative'>
       <button
-        className='relative flex items-center justify-center focus:outline-none group'
-        onClick={() => (isCartOpen ? closeCart() : openCart())}
+        ref={cartButtonRef}
+        className='relative flex items-center justify-center group'
+        onClick={() =>
+          isCartOpen ? triggerCloseCartAndRestoreFocus() : openCart()
+        }
         aria-label='Visa varukorg'
       >
         <>
           {isLoading ? (
-             <div className='flex items-center justify-center'>
-             <SpinningLogo width='30' height='25' />
-           </div>
+            <div className='flex items-center justify-center'>
+              <SpinningLogo width='30' height='25' />
+            </div>
           ) : (
             <PiBagSimpleThin
               size={28}
@@ -89,6 +110,8 @@ export default function CartDropdown() {
       <AnimatePresence>
         {isCartOpen && (
           <motion.div
+            ref={dropdownRef}
+            tabIndex={-1}
             className='absolute -right-3 md:right-0 top-10.5  w-72 md:w-96 bg-white shadow-lg rounded-xs z-20 overflow-hidden '
             initial={{opacity: 0, y: -15}}
             animate={{opacity: 1, y: 0}}
@@ -99,7 +122,7 @@ export default function CartDropdown() {
               <div className='flex justify-between items-center p-3 border-b border-gray-100'>
                 <h2 className='font-medium'>Din varukorg ({itemCount})</h2>
                 <div aria-label='Stäng varukorg'>
-                  <MotionCloseX onClick={closeCart} />
+                  <MotionCloseX onClick={triggerCloseCartAndRestoreFocus} />
                 </div>
               </div>
 
@@ -110,7 +133,10 @@ export default function CartDropdown() {
               )}
 
               {!isLoading && cartItems.length === 0 && (
-                <EmptyCart compact onCartClick={() => closeCart()} />
+                <EmptyCart
+                  compact
+                  onCartClick={triggerCloseCartAndRestoreFocus}
+                />
               )}
 
               {!isLoading && cartItems.length > 0 && (
@@ -119,7 +145,7 @@ export default function CartDropdown() {
                   <CartSummary
                     totalPrice={totalPrice}
                     compact
-                    onCartClick={() => closeCart()}
+                    onCartClick={triggerCloseCartAndRestoreFocus}
                   />
                 </>
               )}

@@ -132,13 +132,13 @@ function SignInFormContent() {
               <button
                 type='button'
                 onClick={() => setShowPassword(!showPassword)}
-                className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-gray-700 focus:outline-none'
+                className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 focus:text-black hover:text-black focus:outline-none'
                 aria-label={showPassword ? 'Dölj lösenord' : 'Visa lösenord'}
               >
                 {showPassword ? (
-                  <EyeOff className='h-5 w-5' />
+                  <EyeOff className='h-5 w-5 ' />
                 ) : (
-                  <Eye className='h-5 w-5' />
+                  <Eye className='h-5 w-5 ' />
                 )}
               </button>
             </div>
@@ -175,7 +175,7 @@ function SignInFormContent() {
 
       {source === 'checkout' && (
         <div className='flex flex-col items-center mt-4 px-4'>
-          <div className='relative flex py-3 items-center w-full'>
+          <div className='relative flex py-3 mb-4 items-center w-full'>
             <div className='flex-grow border-t border-gray-400'></div>
             <span className='flex-shrink mx-4 text-gray-500 text-xs uppercase'>
               Eller
@@ -187,7 +187,7 @@ function SignInFormContent() {
             passHref
             className={`${isPending ? 'pointer-events-none opacity-50' : ''} 	w-full`}
           >
-            <Button variant='outline' className='w-full mt-4 border-black'>
+            <Button variant='outline' className='w-full mt-0  border-black'>
               Fortsätt som gäst
             </Button>
           </Link>

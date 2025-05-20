@@ -135,19 +135,19 @@ export default function ProductCard({
               <>
                 <button
                   className={twMerge(
-                    `${prevButtonClass} absolute left-0 top-1/2 -translate-y-1/2 pr-3 pl-1 py-4 transition-opacity duration-800 z-10 opacity-0 group-hover:opacity-100`
+                    `${prevButtonClass} absolute left-0 top-1/2 -translate-y-1/2 pr-3 pl-1 py-4 transition-opacity duration-800 z-10 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100`
                   )}
                   aria-label='Föregående bild'
                 >
                   <ChevronLeft
                     size={24}
                     strokeWidth={1.25}
-                    className='text-gray-600'
+                    className='text-gray-600 '
                   />
                 </button>
                 <button
                   className={twMerge(
-                    `${nextButtonClass} absolute right-0 top-1/2 -translate-y-1/2 pl-3 pr-1 py-4 transition-opacity duration-800 z-10 opacity-0 group-hover:opacity-100`
+                    `${nextButtonClass} absolute right-0 top-1/2 -translate-y-1/2 pl-3 pr-1 py-4 transition-opacity duration-800 z-10 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100`
                   )}
                   aria-label='Nästa bild'
                 >

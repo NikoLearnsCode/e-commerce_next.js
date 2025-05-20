@@ -99,7 +99,7 @@ function ChangePasswordForm() {
           <button
             type='button'
             onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-            className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-gray-700 focus:outline-none'
+            className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-black focus:text-black outline-none'
             aria-label={
               showCurrentPassword
                 ? 'Dölj nuvarande lösenord'
@@ -135,7 +135,7 @@ function ChangePasswordForm() {
           <button
             type='button'
             onClick={() => setShowNewPassword(!showNewPassword)}
-            className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-gray-700 focus:outline-none'
+            className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-black focus:text-black outline-none'
             aria-label={
               showNewPassword ? 'Dölj nytt lösenord' : 'Visa nytt lösenord'
             }
@@ -169,7 +169,7 @@ function ChangePasswordForm() {
           <button
             type='button'
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-gray-700 focus:outline-none'
+            className='absolute inset-y-0 right-0 flex items-center justify-center h-full px-3 text-gray-500 hover:text-black focus:text-black outline-none'
             aria-label={
               showConfirmPassword
                 ? 'Dölj bekräftelselösenord'

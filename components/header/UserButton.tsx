@@ -110,7 +110,7 @@ const UserButton = () => {
     <div className='relative' ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className='flex items-center focus:outline-none cursor-pointer  relative'
+        className='flex items-center  cursor-pointer  relative'
       >
         <div className='h-7 w-7 rounded-full uppercase black border border-black bg-white flex items-center justify-center text-sm  font-semibold'>
           {firstAndLastInitial}

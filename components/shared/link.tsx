@@ -17,12 +17,14 @@ const linkVariants = cva(
           'border border-input bg-background  hover:bg-accent hover:text-accent-foreground',
 
         secondaryTwo:
-          'bg-background/60  border border-secondary shadow-sm ',
+          'bg-secondary/60 hover:bg-secondary active:bg-secondary focus:bg-secondary border border-secondary shadow-sm ',
+
+
         primaryTwo:
-          'bg-primary/60 border border-primary text-primary-foreground text-white  shadow-sm ',
+          'bg-primary/60 hover:bg-primary active:bg-primary focus:bg-primary border hover:border-primary border-primary text-primary-foreground text-white  shadow-sm ',
 
         secondary:
-          'border border-gray-500/70  bg-background active:bg-secondary/80  hover:bg-secondary/80 ',
+          'border border-gray-500/70  bg-background focus:bg-secondary/80  hover:bg-secondary/80 ',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
 
         underline: 'text-xs text-primary underline-offset-4 hover:underline ',

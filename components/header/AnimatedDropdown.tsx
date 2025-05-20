@@ -132,7 +132,6 @@ export const MotionOverlay = ({
   return (
     <motion.div
       className={`fixed inset-0 h-full w-full bg-black z-30 ${className}`}
-    
       variants={backdropVariants}
       initial='hidden'
       animate='visible'
