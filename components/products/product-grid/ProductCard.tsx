@@ -73,14 +73,14 @@ export default function ProductCard({
             />
           </Link>
         </div>
-        <div className='py-2 px-5 flex flex-col gap-0.5 '>
+        <div className='py-2 px-3 flex flex-col  '>
           <Link href={`/${product.slug}`}>
-            <h2 className=' text-sm sm:text-lg '>{product.name}</h2>
+            <h2 className=' text-sm sm:text-base '>{product.name}</h2>
           </Link>
-          <p className='text-xs font-semibold uppercase font-syne text-gray-600 '>
+          <p className='text-[11px] sm:text-xs font-semibold uppercase font-syne text-gray-600 '>
             {product.brand}
           </p>
-          <p className='text-sm sm-text-base'>{product.price} kr</p>
+          <p className='text-xs sm:text-sm'>{product.price} kr</p>
           {/* <p className='text-xs font-medium text-gray-600 uppercase font-syne'>
             {product.color}
           </p> */}
@@ -179,14 +179,14 @@ export default function ProductCard({
         )}
       </div>
 
-      <div className='py-2 px-5 flex flex-col gap-0.5 '>
+      <div className='py-2 px-3 flex flex-col  '>
         <Link href={`/${product.slug}`}>
-          <h2 className=' text-sm sm:text-lg '>{product.name}</h2>
+          <h2 className=' text-sm sm:text-base'>{product.name}</h2>
         </Link>
-        <p className='text-xs font-semibold uppercase font-syne text-gray-600 '>
+        <p className='text-[11px] sm:text-xs font-semibold uppercase font-syne text-gray-600 '>
           {product.brand}
         </p>
-        <p className='text-sm sm-text-base'>{product.price} kr</p>
+        <p className=' text-xs sm:text-sm '>{product.price} kr</p>
         {/* <p className='text-xs font-medium text-gray-600 uppercase font-syne'>
           {product.color}
         </p> */}
