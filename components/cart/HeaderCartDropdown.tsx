@@ -25,10 +25,7 @@ export default function CartDropdown() {
     itemCount,
   } = useCart();
 
-  const triggerCloseCartAndRestoreFocus = () => {
-    closeCart();
-    cartButtonRef.current?.focus();
-  };
+ 
 
   useEffect(() => {
     if (isCartOpen) {
@@ -36,7 +33,7 @@ export default function CartDropdown() {
 
       const handleEscape = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
-          triggerCloseCartAndRestoreFocus();
+          closeCart();
         }
       };
       document.addEventListener('keydown', handleEscape);
@@ -62,7 +59,7 @@ export default function CartDropdown() {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        triggerCloseCartAndRestoreFocus();
+        closeCart();
       }
     };
 
@@ -76,9 +73,9 @@ export default function CartDropdown() {
     <div className='relative'>
       <button
         ref={cartButtonRef}
-        className='relative flex items-center justify-center group'
+        className='relative flex items-center outline-gray-300  justify-center group'
         onClick={() =>
-          isCartOpen ? triggerCloseCartAndRestoreFocus() : openCart()
+          isCartOpen ? closeCart() : openCart()
         }
         aria-label='Visa varukorg'
       >
@@ -112,7 +109,7 @@ export default function CartDropdown() {
           <motion.div
             ref={dropdownRef}
             tabIndex={-1}
-            className='absolute -right-3 md:right-0 top-10.5  w-72 md:w-96 bg-white shadow-lg rounded-xs z-20 overflow-hidden '
+            className='absolute -right-3 md:right-0 top-10.5  w-72 md:w-96 bg-white shadow-lg rounded-xs z-20 overflow-hidden outline-none'
             initial={{opacity: 0, y: -15}}
             animate={{opacity: 1, y: 0}}
             exit={{opacity: 0, y: -15}}
@@ -122,7 +119,7 @@ export default function CartDropdown() {
               <div className='flex justify-between items-center p-3 border-b border-gray-100'>
                 <h2 className='font-medium'>Din varukorg ({itemCount})</h2>
                 <div aria-label='Stäng varukorg'>
-                  <MotionCloseX onClick={triggerCloseCartAndRestoreFocus} />
+                  <MotionCloseX onClick={closeCart} />
                 </div>
               </div>
 
@@ -135,7 +132,7 @@ export default function CartDropdown() {
               {!isLoading && cartItems.length === 0 && (
                 <EmptyCart
                   compact
-                  onCartClick={triggerCloseCartAndRestoreFocus}
+                  onCartClick={closeCart}
                 />
               )}
 
@@ -145,7 +142,7 @@ export default function CartDropdown() {
                   <CartSummary
                     totalPrice={totalPrice}
                     compact
-                    onCartClick={triggerCloseCartAndRestoreFocus}
+                    onCartClick={closeCart}
                   />
                 </>
               )}
