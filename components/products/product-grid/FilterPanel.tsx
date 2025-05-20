@@ -157,7 +157,7 @@ export default function FilterPanel({
             key='filter-dropdown'
             className='max-w-full z-50 min-w-full md:max-w-[500px] md:min-w-[500px]'
           >
-            <div className='flex flex-col h-full justify-between py-10 px-10'>
+            <div className='flex flex-col h-full justify-between py-10 px-6 sm:px-10'>
               {/* --- Titel och stängknapp --- */}
               <div className='flex items-center justify-between mb-10'>
                 <h1 className='text-base font-semibold uppercase font-syne '>
