@@ -15,7 +15,7 @@ export default function FilterBar({
   hasActiveFilters,
 }: FilterBarProps) {
   return (
-    <div className='sticky top-14 w-full bg-white py-4 pb-6 px-5 sm:px-8 text-base flex justify-between items-center z-20'>
+    <div className='sticky top-14 w-full bg-white py-4 pb-5 px-5 sm:px-8 text-base flex justify-between items-center z-20'>
       <button
         onClick={onToggleFilter}
         className='flex items-center gap-2  hover:text-gray-700 transition-colors cursor-pointer'
@@ -37,7 +37,7 @@ export default function FilterBar({
       </button>
       <span className='text-sm sm:text-base'>
         {totalCount}{' '}
-        <span className='font-syne'>
+        <span className=''>
           {totalCount === 1 ? 'produkt' : 'produkter'}
         </span>
       </span>
