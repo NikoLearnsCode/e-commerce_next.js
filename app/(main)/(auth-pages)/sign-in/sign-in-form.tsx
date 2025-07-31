@@ -74,11 +74,8 @@ export default function SignInForm() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className='flex flex-col mx-auto px-4 gap-2'
-      >
-        <fieldset disabled={isPending}>
+      <form onSubmit={handleSubmit} className='mx-auto px-4'>
+        <fieldset disabled={isPending} className='flex flex-col gap-2'>
           <span
             className={`${isPending ? 'pointer-events-none opacity-50' : ''}`}
           >
@@ -106,7 +103,7 @@ export default function SignInForm() {
             </div>
           )}
 
-          <div className='flex flex-col mt-4'>
+          <div className='flex flex-col mt-3'>
             <FloatingLabelInput
               id='email'
               name='email'
@@ -121,7 +118,7 @@ export default function SignInForm() {
             />
           </div>
 
-          <div className='mt-5'>
+          <div className='mt-2'>
             <div className='relative'>
               <FloatingLabelInput
                 id='password'
@@ -167,7 +164,7 @@ export default function SignInForm() {
         <Button
           type='submit'
           disabled={isPending}
-          className='flex items-center justify-center mt-2'
+          className='flex items-center w-full justify-center mt-3'
         >
           {isPending ? (
             <>
@@ -217,4 +214,3 @@ export default function SignInForm() {
     </>
   );
 }
-

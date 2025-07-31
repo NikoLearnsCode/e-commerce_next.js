@@ -63,14 +63,12 @@ export default function SignUpForm() {
         } = await signUpAction(formData);
 
         if (result.success) {
-          // Clear fields
           setEmail('');
           setPassword('');
           setConfirmPasswordValue('');
           // setSuccessMessage(
           //   result.message || 'Registrering lyckad! Kontrollera din e-post.'
           // );
-          // Refresh cart first
           await refreshCart();
           router.push(result.callbackUrl || '/');
         } else {
@@ -114,7 +112,7 @@ export default function SignUpForm() {
         </div>
       )}
 
-      <div className='flex flex-col mt-4'>
+      <div className='flex flex-col mt-3'>
         <FloatingLabelInput
           id='email'
           name='email'
@@ -129,7 +127,7 @@ export default function SignUpForm() {
           }}
         />
       </div>
-      <div className='mt-5'>
+      <div className='my-2'>
         <div className='relative'>
           <FloatingLabelInput
             id='password'
@@ -159,7 +157,7 @@ export default function SignUpForm() {
           </button>
         </div>
       </div>
-      <div className='mt-5'>
+      <div>
         <div className='relative'>
           <FloatingLabelInput
             id='confirmPassword'

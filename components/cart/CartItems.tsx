@@ -45,7 +45,7 @@ export default function CartItems({compact = false}: CartItemsProps) {
     <div
       className={
         compact
-          ? 'max-h-[20vh] sm:max-h-[40vh] overflow-y-auto'
+          ? 'max-h-[25vh] sm:max-h-[40vh] overflow-y-auto'
           : 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 '
       }
     >

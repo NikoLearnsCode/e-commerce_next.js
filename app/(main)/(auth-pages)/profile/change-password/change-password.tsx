@@ -6,7 +6,7 @@ import {Button} from '@/components/shared/button';
 import {FloatingLabelInput} from '@/components/shared/floatingLabelInput';
 import Link from 'next/link';
 
-import {Loader2, Eye, EyeOff} from 'lucide-react';
+import {Loader2, Eye, EyeOff, ArrowLeft} from 'lucide-react';
 import {useRouter} from 'next/navigation';
 
 export default function ChangePasswordForm() {
@@ -75,7 +75,7 @@ export default function ChangePasswordForm() {
         </div>
       )}
 
-      <div className='flex flex-col mt-4'>
+      <div className='flex flex-col mt-3'>
         {/* Current Password Input */}
         <div className='relative'>
           <FloatingLabelInput
@@ -111,7 +111,7 @@ export default function ChangePasswordForm() {
         </div>
       </div>
 
-      <div className='mt-5'>
+      <div className='my-2'>
         {/* New Password Input */}
         <div className='relative'>
           <FloatingLabelInput
@@ -145,7 +145,7 @@ export default function ChangePasswordForm() {
         </div>
       </div>
 
-      <div className='mt-5'>
+      <div>
         {/* Confirm Password Input */}
         <div className='relative'>
           <FloatingLabelInput
@@ -181,15 +181,11 @@ export default function ChangePasswordForm() {
         </div>
       </div>
 
-      <div className='flex justify-between gap-4 mt-4'>
-        <Button type='button' variant='outline' className='w-full' asChild>
-          <Link href='/profile'>Avbryt</Link>
-        </Button>
-
+      <div className='flex flex-col justify-between mt-4'>
         <Button
           type='submit'
           disabled={isPending}
-          className='flex items-center justify-center w-full'
+          className='flex items-center mt-0 justify-center w-full'
         >
           {isPending ? (
             <>
@@ -200,6 +196,17 @@ export default function ChangePasswordForm() {
             'Ändra lösenord'
           )}
         </Button>
+        <Link
+          className={`${isPending ? 'pointer-events-none opacity-50' : ''} 	text-sm text-primary  hover:underline flex justify-center  items-center gap-1 mt-6 group tracking-wider mx-auto text-center`}
+          href='/profile'
+        >
+          <ArrowLeft
+            size={14}
+            strokeWidth={1.5}
+            className='group-hover:-translate-x-1 transition-transform duration-300'
+          />
+          Tillbaka
+        </Link>
       </div>
     </form>
   );

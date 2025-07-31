@@ -69,7 +69,7 @@ export default function ResetPasswordForm() {
         </div>
       )}
 
-      <div className='flex flex-col mt-4'>
+      <div className='flex flex-col mt-3'>
         <div className='relative'>
           <FloatingLabelInput
             id='password'
@@ -100,7 +100,7 @@ export default function ResetPasswordForm() {
         </div>
       </div>
 
-      <div className='mt-5'>
+      <div className='mt-2'>
         <div className='relative'>
           <FloatingLabelInput
             id='confirmPassword'

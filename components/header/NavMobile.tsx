@@ -111,12 +111,12 @@ export default function MobileNav({navLinks}: MobileNavProps) {
               className='overflow-y-auto'
             >
               {/* Huvudkategorier och stängningsknapp */}
-              <ul className='flex uppercase px-4 pr-6 text-sm  font-semibold font-syne py-4.5 items-center '>
+              <ul className='flex uppercase px-4 pr-6 text-sm  font-semibold font-syne py-5 items-center '>
                 {navLinks.map((link, index) => (
                   <li
                     key={link.title}
                     onClick={() => changeCategory(index)}
-                    className={`mx-3 cursor-pointer border-b active:border-b active:border-black active: transition ${
+                    className={`mx-3 cursor-pointer border-b  ${
                       activeCategory === index
                         ? 'text-black border-black'
                         : 'text-gray-500 border-transparent'

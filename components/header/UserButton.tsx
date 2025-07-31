@@ -41,7 +41,7 @@ function LogoutButton() {
           <span className='flex w-full hover:text-red-700 font-medium justify-between group relative items-center gap-2 text-gray-700'>
             Logga ut
             <ArrowRight
-              size={14}
+              size={12}
               strokeWidth={1.5}
               className='group-hover:translate-x-1  transition-transform duration-300'
             />
@@ -68,8 +68,6 @@ const UserButton = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-
- 
 
   // Uppdatera användarinformation när komponenten monteras
   useEffect(() => {
@@ -103,8 +101,6 @@ const UserButton = () => {
       </span>
     );
   }
-
- 
 
   if (!user) {
     return (
@@ -142,9 +138,9 @@ const UserButton = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={`absolute top-9.5 -right-5 md:-right-25 w-64 md:w-80 bg-white  rounded-xs shadow-lg py-1 z-20 border  border-gray-300
+            className={`absolute top-10 md:top-9.5  -right-5 md:-right-25 w-64 md:w-[300px] bg-white  rounded-xs shadow-lg py-1 z-20 border  border-gray-300
             
-            before:content-[''] before:absolute before:bottom-full before:right-6 md:before:left-1/2  before:w-0 before:h-0 before:border-[8px] before:border-transparent before:border-b-gray-400/80
+            before:content-[''] before:absolute before:bottom-full before:right-6 md:before:left-1/2 before:w-0 before:h-0 before:border-[8px] before:border-transparent before:border-b-gray-400/80
 
             after:content-[''] after:absolute after:bottom-full after:right-6 md:after:left-1/2 after:w-0 after:h-0 after:border-[8px] after:border-transparent after:border-b-white after:-mb-px
             `}
@@ -178,7 +174,7 @@ const UserButton = () => {
               <span className='flex w-full font-medium hover:text-black justify-between group relative items-center gap-2 '>
                 Mitt konto
                 <ArrowRight
-                  size={14}
+                  size={12}
                   strokeWidth={1.5}
                   className='group-hover:translate-x-1  transition-transform duration-300'
                 />

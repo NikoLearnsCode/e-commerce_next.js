@@ -99,7 +99,7 @@ export default function CartDropdown() {
           <motion.div
             ref={dropdownRef}
             tabIndex={-1}
-            className={`absolute -right-1 md:right-0 top-9.5 w-72 md:w-96 bg-white shadow-lg rounded-xs z-20 outline-none border border-gray-300  
+            className={`absolute -right-1 md:right-0 top-10 md:top-9.5 w-72 md:w-96 bg-white shadow-lg rounded-xs z-20 outline-none border border-gray-300  
 
             before:content-[''] before:absolute before:bottom-full before:right-2 md:before:right-12  before:w-0 before:h-0  before:border-[8px] before:border-transparent before:border-b-gray-400/70
 

@@ -45,25 +45,31 @@ export default function ProductCarousel({
           {title}
         </h2>
 
-        <div className='flex gap-1 z-10'>
+        <div className='flex  z-10'>
           <button
-            className={`${prevButtonClass} p-1 transition cursor-pointer ${
+            className={`${prevButtonClass} py-1.5 px-3 transition cursor-pointer ${
               isBeginning ? 'opacity-50 pointer-events-none' : 'opacity-100'
             }`}
             aria-label='Föregående'
             disabled={isBeginning}
           >
-            <ArrowLeft strokeWidth={1.25} className='  h-4 w-4 sm:h-5 sm:w-5' />
+            <ArrowLeft
+              strokeWidth={1.25}
+              className='  h-4 w-4 sm:h-4.5 sm:w-4.5 '
+            />
           </button>
 
           <button
-            className={`${nextButtonClass} p-1 pr-3 transition cursor-pointer ${
+            className={`${nextButtonClass} py-1.5 px-3 transition cursor-pointer ${
               isEnd ? 'opacity-50 pointer-events-none' : 'opacity-100'
             }`}
             aria-label='Nästa'
             disabled={isEnd}
           >
-            <ArrowRight strokeWidth={1.25} className=' h-4 w-4 sm:h-5 sm:w-5' />
+            <ArrowRight
+              strokeWidth={1.25}
+              className=' h-4 w-4 sm:h-4.5 sm:w-4.5 '
+            />
           </button>
         </div>
       </div>
@@ -73,6 +79,7 @@ export default function ProductCarousel({
         modules={[Navigation]}
         spaceBetween={4}
         slidesPerView={2}
+        slidesOffsetBefore={20}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -100,7 +107,7 @@ export default function ProductCarousel({
         className='w-full'
       >
         {products.map((product) => (
-          <SwiperSlide className='w-full first:ml-5' key={product.id}>
+          <SwiperSlide className='w-full' key={product.id}>
             <ProductCard
               product={product}
               priorityLoading={false}

@@ -60,7 +60,7 @@ export default function PasswordResetForm() {
           </div>
         )}
 
-        <div className='flex flex-col mt-4'>
+        <div className='flex flex-col mt-3'>
           <FloatingLabelInput
             id='email'
             name='email'

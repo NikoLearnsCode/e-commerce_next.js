@@ -80,28 +80,28 @@ export default function MobileImageSwiper({
         <>
           <button
             className={twMerge(
-              `${prevButtonClass} absolute right-10 bottom-2 text-gray-700  p-1  cursor-pointer z-10`,
+              `${prevButtonClass} absolute p-3 right-10 bottom-0 text-gray-700  cursor-pointer z-10`,
               isBeginning ? 'opacity-50 pointer-events-none' : 'opacity-100'
             )}
             aria-label='Föregående bild'
           >
-            <ArrowLeft size={20} strokeWidth={1.25} />
+            <ArrowLeft size={16} strokeWidth={1.25} />
           </button>
           <button
             className={twMerge(
-              `${nextButtonClass} absolute right-2 bottom-2 text-gray-700 p-1  cursor-pointer  z-10`,
+              `${nextButtonClass} absolute right-2 bottom-0 text-gray-700 p-3  cursor-pointer  z-10`,
               isEnd ? 'opacity-50 pointer-events-none' : 'opacity-100'
             )}
             aria-label='Nästa bild'
           >
-            <ArrowRight size={20} strokeWidth={1.25} />
+            <ArrowRight size={16} strokeWidth={1.25} />
           </button>
         </>
       )}
       {/* Pagination Text Indicator */}
       {images.length > 1 && (
         <div className='absolute bottom-2 left-2 justify-center mt-4 flex gap-2 z-10'>
-          <span className='text-base font-medium  text-gray-700  px-1 '>
+          <span className='text-sm font-medium  text-gray-700  px-1 '>
             {activeIndex + 1} / {images.length}
           </span>
         </div>
