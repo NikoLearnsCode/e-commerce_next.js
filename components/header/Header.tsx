@@ -42,7 +42,7 @@ export default function Header() {
       {isSearchExpanded && (
         <MotionOverlay
           key='search-overlay'
-          className=' bg-black/30'
+          className=' bg-black/20'
           onClick={() => {
             setIsSearchExpanded(false);
           }}

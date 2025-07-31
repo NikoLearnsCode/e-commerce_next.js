@@ -69,7 +69,7 @@ export default function FilterPanel({
             <div className='flex flex-col h-full justify-between py-10 px-6 sm:px-10'>
               {/* --- Titel och stängknapp --- */}
               <div className='flex items-center justify-between mb-10'>
-                <h1 className='text-base font-semibold uppercase font-syne '>
+                <h1 className='text-sm sm:text-base font-semibold uppercase font-syne '>
                   Filtrera och ordna
                 </h1>
                 <MotionCloseX
@@ -92,7 +92,7 @@ export default function FilterPanel({
                       <Accordion.Trigger>
                         <div className='flex flex-col'>
                           <span className='text-sm sm:text-base'>
-                            Storlekar
+                            Storlek
                           </span>
                           {selectedSizes.length > 0 && (
                             <span className='font-normal text-xs uppercase  text-gray-600 '>
@@ -125,7 +125,7 @@ export default function FilterPanel({
                     >
                       <Accordion.Trigger>
                         <div className='flex flex-col '>
-                          <span className='text-sm sm:text-base'>Färger</span>
+                          <span className='text-sm sm:text-base'>Färg</span>
                           {selectedColors.length > 0 && (
                             <span className='font-normal text-xs uppercase font-syne text-gray-600 '>
                               {selectedColors.join(', ')}

@@ -21,7 +21,7 @@ export default function FilterBar({
         className='flex items-center gap-2  hover:text-gray-700 transition-colors cursor-pointer'
       >
         <span
-          className={`font-medium text-sm sm:text-base  font-syne uppercase group ${hasActiveFilters ? 'text-black' : ''}`}
+          className={`font-medium text-sm sm:text-[15px]  uppercase group ${hasActiveFilters ? 'text-black' : ''}`}
         >
           Filtrera och ordna{' '}
           {hasActiveFilters && (
@@ -35,7 +35,7 @@ export default function FilterBar({
           /> */}
         </span>
       </button>
-      <span className='text-sm sm:text-base'>
+      <span className=' text-xs  sm:text-sm'>
         {totalCount}{' '}
         <span className=''>
           {totalCount === 1 ? 'produkt' : 'produkter'}
