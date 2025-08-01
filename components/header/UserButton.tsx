@@ -52,7 +52,13 @@ function LogoutButton() {
   );
 }
 
-const UserButton = () => {
+const UserButton = ({
+  setIsSearchExpanded,
+  isSearchExpanded,
+}: {
+  setIsSearchExpanded: (value: boolean) => void;
+  isSearchExpanded: boolean;
+}) => {
   const [mounted, setMounted] = useState(false);
   const {user, loading, refreshUser} = useAuth();
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +110,14 @@ const UserButton = () => {
 
   if (!user) {
     return (
-      <button onClick={handleLogin}>
+      <button
+        onClick={() => {
+          if (isSearchExpanded) {
+            setIsSearchExpanded(false);
+          }
+          handleLogin();
+        }}
+      >
         <User size={24} strokeWidth={1} className='md:hidden' />
         <span className='hidden md:block text-sm font-medium uppercase border-b border-transparent hover:border-black transition cursor-pointer text-nowrap'>
           Logga in
@@ -125,7 +138,12 @@ const UserButton = () => {
   return (
     <div className='relative' ref={dropdownRef}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (isSearchExpanded) {
+            setIsSearchExpanded(false);
+          }
+          setIsOpen(!isOpen);
+        }}
         className='flex items-center  cursor-pointer  relative'
       >
         <div className='h-6 w-6 rounded-full uppercase  border border-black/80 bg-white flex items-center justify-center text-[11px]  font-medium md:hidden'>

@@ -175,7 +175,7 @@ function AccordionTrigger({
       aria-controls={contentId}
       tabIndex={0}
       className={twMerge(
-        'flex w-full justify-between items-center py-3 cursor-pointer',
+        'flex w-full justify-between py-3 cursor-pointer',
         className
       )}
       onClick={() => toggleValue(value)}
@@ -186,7 +186,7 @@ function AccordionTrigger({
       {children}
       {showChevron && (
         <ChevronDown
-          className={`transition-transform duration-300 mr-2  ${
+          className={` transition-transform duration-300 mr-1  ${
             isOpen ? 'rotate-180' : ''
           }`}
           size={22}

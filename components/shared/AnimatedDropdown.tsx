@@ -40,7 +40,7 @@ interface MotionDropdownProps {
   className?: string;
   id?: string;
   isMobile?: boolean;
-  position?: 'left' | 'right';
+  position?: 'left' | 'right' | 'top';
 }
 
 export const MotionDropdown = ({
@@ -51,6 +51,7 @@ export const MotionDropdown = ({
   id = 'dropdown',
   position = 'left',
 }: MotionDropdownProps) => {
+
   const leftVariants: Variants = {
     hidden: {x: -100, opacity: 0, width: 0},
     visible: {
@@ -66,6 +67,8 @@ export const MotionDropdown = ({
     },
     exit: {x: -100, opacity: 0, width: 0, transition: {duration: 0.2}},
   };
+
+
   const rightVariants: Variants = {
     hidden: {x: 100, opacity: 0, width: 0},
     visible: {
@@ -82,17 +85,72 @@ export const MotionDropdown = ({
     exit: {x: 100, opacity: 0, width: 0, transition: {duration: 0.2}},
   };
 
-  const dropdownVariants = position === 'left' ? leftVariants : rightVariants;
-  const positionClass = position === 'left' ? 'left-0' : 'right-0';
+
+  const topVariants: Variants = {
+
+    hidden: {
+      clipPath: 'inset(0% 0% 100% 0%)',
+      opacity: 0,
+    },
+
+    visible: {
+      clipPath: 'inset(0% 0% 0% 0%)',
+      opacity: 1,
+      transition: {
+        type: 'tween', 
+        ease: 'easeOut',
+        duration: 0.2,
+      },
+    },
+
+    exit: {
+      clipPath: 'inset(0% 0% 100% 0%)',
+      opacity: 0,
+      transition: {
+        type: 'tween',
+        ease: 'easeIn',
+        duration: 0.1,
+      },
+    },
+  };
+
+  // Funktion för att dynamiskt välja animationsvarianter baserat på 'position'-prop.
+  const getVariants = () => {
+    switch (position) {
+      case 'left':
+        return leftVariants;
+      case 'right':
+        return rightVariants;
+      case 'top':
+        return topVariants;
+      default:
+
+        return leftVariants;
+    }
+  };
+
+  // funktion för att dynamiskt välja CSS-klasser för position och storlek.
+  const getPositionClasses = () => {
+    switch (position) {
+      case 'left':
+        return `left-0 top-0 h-full ${isMobile ? 'w-full' : ''}`;
+      case 'right':
+        return `right-0 top-0 h-full`;
+      case 'top':
+        return 'w-full';
+      default:
+        return 'left-0 top-0 h-full';
+    }
+  };
 
   return (
     <motion.div
-      className={`fixed ${positionClass} top-0 h-full bg-white z-40 shadow-md ${className} ${isMobile ? 'w-full' : ''}`}
+      className={`fixed ${getPositionClasses()} bg-white z-40 shadow-md ${className}`}
+      variants={getVariants()}
       initial='hidden'
       animate='visible'
       exit='exit'
       key={id}
-      variants={dropdownVariants}
       onMouseLeave={onMouseLeave}
     >
       {children}

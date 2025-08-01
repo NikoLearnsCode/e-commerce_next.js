@@ -11,7 +11,13 @@ import {PiBagSimpleThin} from 'react-icons/pi';
 
 import {MotionCloseX} from '../shared/AnimatedDropdown';
 
-export default function CartDropdown() {
+export default function CartDropdown({
+  setIsSearchExpanded,
+  isSearchExpanded,
+}: {
+  setIsSearchExpanded: (value: boolean) => void;
+  isSearchExpanded: boolean;
+}) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const cartButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -68,11 +74,16 @@ export default function CartDropdown() {
   }, [isCartOpen]);
 
   return (
-    <div className='relative'>
+    <div className='relative '>
       <button
         ref={cartButtonRef}
         className='relative flex cursor-pointer items-center outline-gray-800  justify-center group'
-        onClick={() => (isCartOpen ? closeCart() : openCart())}
+        onClick={() => {
+          if (isSearchExpanded) {
+            setIsSearchExpanded(false);
+          }
+          isCartOpen ? closeCart() : openCart();
+        }}
         aria-label={`Visa varukorg ${itemCount > 0 ? ` (${itemCount} varor)` : ''}`}
       >
         <PiBagSimpleThin

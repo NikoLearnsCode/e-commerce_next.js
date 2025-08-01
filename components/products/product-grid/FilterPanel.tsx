@@ -58,7 +58,7 @@ export default function FilterPanel({
           : '';
 
   return (
-    <AnimatePresence mode='wait'>
+    <AnimatePresence >
       {isOpen && (
         <>
           <MotionDropdown
@@ -155,7 +155,7 @@ export default function FilterPanel({
                   >
                     <Accordion.Trigger>
                       <div className='flex flex-col'>
-                        <span className='text-sm sm:text-base'>
+                        <span className='text-sm relative sm:text-base'>
                           Sortera efter
                         </span>
                         {sortOrder && (
@@ -199,6 +199,7 @@ export default function FilterPanel({
                 <Button
                   variant='default'
                   className='w-full'
+                  disabled={!hasActiveFilters}
                   onClick={onApplyFilters}
                 >
                   Visa artiklar
