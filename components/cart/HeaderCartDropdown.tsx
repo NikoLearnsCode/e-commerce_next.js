@@ -9,7 +9,7 @@ import EmptyCart from './EmptyCart';
 import SpinningLogo from '../shared/SpinningLogo';
 import {PiBagSimpleThin} from 'react-icons/pi';
 
-import {MotionCloseX} from '../header/AnimatedDropdown';
+import {MotionCloseX} from '../shared/AnimatedDropdown';
 
 export default function CartDropdown() {
   const dropdownRef = useRef<HTMLDivElement>(null);

@@ -5,6 +5,7 @@ import {useInView} from 'react-intersection-observer';
 import {Product} from '@/lib/validators';
 import ProductGrid from '@/components/products/product-grid/ProductGrid';
 import {useInfiniteProducts} from '@/hooks/useInfiniteProducts';
+import SpinningLogo from '@/components/shared/SpinningLogo';
 
 type SearchInfiniteScrollProps = {
   initialProducts: Product[];
@@ -58,8 +59,8 @@ export default function SearchInfiniteScroll({
   // Error state
   if (error) {
     return (
-      <div className='text-center py-12'>
-        <p className='text-red-800 font-semibold italic'>
+      <div className='text-center py-12 min-h-[calc(100vh-400px)]'>
+        <p className='text-red-800 text-lg font-medium italic'>
           Ett fel uppstod:{' '}
           {error instanceof Error ? error.message : 'Okänt fel'}
         </p>
@@ -67,33 +68,8 @@ export default function SearchInfiniteScroll({
     );
   }
 
-  if (!query) {
-    return (
-      <div className='flex items-center justify-center min-h-[calc(100vh-400px)]'>
-        <div className='text-center'>
-          <p className='text-gray-600'>
-            Ange ett sökord för att hitta produkter.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (products.length === 0 && !isFetchingNextPage && !isLoading) {
-    return (
-      <div className='flex items-center justify-center min-h-[calc(100vh-400px)]'>
-        <div className='text-center'>
-          <p className='px-5  text-sm sm:text-base font-medium '>
-            Inga produkter hittades för "{query}". Prova med andra sökord.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
-    
       <div className='w-full'>
         <h2 className='text-sm md:text-base uppercase font-medium px-4 sm:px-8 pt-2 pb-5'>
           Sökresultat för "{query}"
@@ -108,19 +84,21 @@ export default function SearchInfiniteScroll({
       <div className='w-full'>
         {/* Loading indicator and intersection trigger */}
         {hasNextPage && (
-          <div ref={ref} className='flex justify-center py-8'>
+          <div ref={ref} className='flex justify-center opacity-70 py-8'>
             {isFetchingNextPage ? (
-              <div className='animate-spin rounded-full h-6 w-6 border-b-2 border-black'></div>
+              <SpinningLogo width='45' height='37' />
             ) : (
-              <div className='h-10' /> // Invisible trigger area
+              <div />
             )}
           </div>
         )}
 
         {/* No more products message */}
         {!hasNextPage && products.length > 8 && !isLoading && (
-          <div className='text-center py-8'>
-            <p className='text-gray-600'>Inga fler sökresultat att visa</p>
+          <div className='text-center py-12'>
+            <p className='text-gray-600 text-base'>
+              Inga fler sökresultat att visa
+            </p>
           </div>
         )}
       </div>

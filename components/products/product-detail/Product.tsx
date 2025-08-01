@@ -87,7 +87,7 @@ export default function product({
           <div className='flex flex-col lg:pt-12 px-5 lg:mr-12 sticky top-18 h-full   gap-3 lg:gap-1 mb-10   lg:w-[35%] transition-all duration-300'>
             {/* Product name */}
             <div>
-              <h1 className='text-lg lg:text-xl mt-2 sm:mt-4 font-medium'>
+              <h1 className='text-lg sm:text-xl mt-2 lg:mt-4 font-medium'>
                 {product.name}
               </h1>
               {/* <p className='text-gray-700 font-semibold uppercase font-syne text-sm'>
@@ -95,12 +95,12 @@ export default function product({
               </p> */}
             </div>
 
-            <div className='text-lg my-1 sm:my-4 text-gray-800 '>
+            <div className='text-lg  lg:my-3 text-gray-800 '>
               {product.price} kr
             </div>
             <div className='flex items-center gap-1 text-sm '>
               <span className=' uppercase text-xs font-medium'>Färg:</span>
-              <p className='text-sm text-black font-medium'>
+              <p className='text-sm text-black '>
                 {product.color &&
                   product.color.charAt(0).toUpperCase() +
                     product.color.slice(1)}
@@ -108,7 +108,7 @@ export default function product({
             </div>
 
             {/* Size */}
-            <div className='flex flex-col mt-6 gap-2'>
+            <div className='flex flex-col mt-3 lg:mt-5 gap-2'>
               <span
                 className={twMerge(
                   'text-gray-700 font-medium  uppercase text-xs mb-1',
@@ -122,7 +122,7 @@ export default function product({
                   <button
                     key={size}
                     className={twMerge(
-                      'h-12 w-16 p-0 m-0 border appearance-none text-sm font-medium hover:border-black active:border-black transition border-gray-200 cursor-pointer',
+                      'h-12 w-16 p-0 m-0 border appearance-none text-sm  hover:border-black active:border-black transition border-gray-200 cursor-pointer',
                       selectedSize === size
                         ? 'border border-black bg-gray-100'
                         : ''

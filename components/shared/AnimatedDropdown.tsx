@@ -24,7 +24,7 @@ export const MotionCloseX = ({
       onClick={onClick}
       className={`cursor-pointer z-50 ${className}`}
       aria-label='Stäng meny'
-      initial={withTranslate ? {opacity: 0, rotate: -90, translateX: -2} : {}}
+      initial={withTranslate ? {opacity: 0, rotate: -45, translateX: -2} : {}}
       animate={withTranslate ? {opacity: 1, rotate: 0, translateX: 0} : {}}
       transition={{delay: 0.2, duration: 0.3}}
     >
@@ -122,8 +122,6 @@ export const MotionOverlay = ({
     visible: {opacity: 0.2, transition: {duration: 0.2}},
     exit: {opacity: 0, transition: {duration: 0.2}},
   };
-
-
 
   return (
     <motion.div

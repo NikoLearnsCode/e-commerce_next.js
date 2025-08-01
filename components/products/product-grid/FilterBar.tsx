@@ -15,7 +15,7 @@ export default function FilterBar({
   hasActiveFilters,
 }: FilterBarProps) {
   return (
-    <div className='sticky top-14 w-full bg-white py-4 pb-5 px-5 sm:px-8 text-base flex justify-between items-center z-20'>
+    <div className='sticky top-14 w-full bg-white py-4 pb-5 px-4 sm:px-8 text-base flex justify-between items-center z-20'>
       <button
         onClick={onToggleFilter}
         className='flex items-center gap-2  hover:text-gray-700 transition-colors cursor-pointer'
@@ -29,17 +29,11 @@ export default function FilterBar({
               ({activeFilterCount})
             </span>
           )}
-          {/* <ArrowRight
-            strokeWidth={1.75}
-            className='w-4 h-4 ml-1 inline group-hover:translate-x-1 transition-transform'
-          /> */}
         </span>
       </button>
       <span className=' text-xs  sm:text-sm'>
         {totalCount}{' '}
-        <span className=''>
-          {totalCount === 1 ? 'produkt' : 'produkter'}
-        </span>
+        <span className=''>{totalCount === 1 ? 'produkt' : 'produkter'}</span>
       </span>
     </div>
   );

@@ -9,7 +9,7 @@ import {
   MotionDropdown,
   MotionOverlay,
   MotionCloseX,
-} from '@/components/header/AnimatedDropdown';
+} from '@/components/shared/AnimatedDropdown';
 
 interface MobileNavProps {
   navLinks: NavLink[];
@@ -129,7 +129,7 @@ export default function MobileNav({navLinks}: MobileNavProps) {
               <div className='absolute top-0 right-1.5'>
                 <MotionCloseX
                   onClick={closeMenu}
-                  size={16}
+                  size={14}
                   withTranslate={true}
                   className='p-5'
                   strokeWidth={1.5}

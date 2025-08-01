@@ -9,7 +9,7 @@ import {
   MotionCloseX,
   MotionOverlay,
   MotionDropdown,
-} from '@/components/header/AnimatedDropdown';
+} from '@/components/shared/AnimatedDropdown';
 import {Button} from '@/components/shared/button';
 
 interface FilterPanelProps {
@@ -66,7 +66,7 @@ export default function FilterPanel({
             key='filter-dropdown'
             className='max-w-full z-50 min-w-full md:max-w-[500px] md:min-w-[500px]'
           >
-            <div className='flex flex-col h-full justify-between py-10 px-6 sm:px-10'>
+            <div className='flex flex-col h-full justify-between py-6 md:py-8 px-5 sm:px-10'>
               {/* --- Titel och stängknapp --- */}
               <div className='flex items-center justify-between mb-10'>
                 <h1 className='text-sm sm:text-base font-semibold uppercase font-syne '>
@@ -74,7 +74,8 @@ export default function FilterPanel({
                 </h1>
                 <MotionCloseX
                   onClick={onClose}
-                  size={18}
+                  size={14}
+
                   strokeWidth={1.5}
                   className=' p-2.5'
                 />
@@ -91,9 +92,7 @@ export default function FilterPanel({
                     >
                       <Accordion.Trigger>
                         <div className='flex flex-col'>
-                          <span className='text-sm sm:text-base'>
-                            Storlek
-                          </span>
+                          <span className='text-sm sm:text-base'>Storlek</span>
                           {selectedSizes.length > 0 && (
                             <span className='font-normal text-xs uppercase  text-gray-600 '>
                               {selectedSizes.join(', ')}

@@ -6,7 +6,7 @@ import NavLinks from './NavLinks';
 import SearchBar from './SearchBar';
 import UserButton from './UserButton';
 import HeaderCartDropdown from '@/components/cart/HeaderCartDropdown';
-import {MotionOverlay} from './AnimatedDropdown';
+import {MotionOverlay} from '../shared/AnimatedDropdown';
 
 export default function Header() {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);

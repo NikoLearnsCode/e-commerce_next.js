@@ -29,7 +29,19 @@ export default async function SearchPage({searchParams}: Props) {
       })
     : {products: [], hasMore: false, totalCount: 0};
 
-  console.log('FROM SSR', result);
+  // console.log('FROM SSR', result);
+
+  if (!result.products || result.products.length === 0) {
+    return (
+      <div className='flex items-center justify-center min-h-[calc(100vh-400px)]'>
+        <div className='text-center'>
+          <p className='px-5 text-base md:text-lg italic'>
+            Inga produkter hittades för "{q}". Prova med andra sökord.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='w-full flex justify-center py-4'>

@@ -8,7 +8,7 @@ import {
   MotionCloseX,
   MotionDropdown,
   MotionOverlay,
-} from '@/components/header/AnimatedDropdown';
+} from '@/components/shared/AnimatedDropdown';
 
 interface DesktopNavProps {
   navLinks: NavLink[];
@@ -150,7 +150,7 @@ export default function DesktopNav({navLinks}: DesktopNavProps) {
               <div className='absolute top-1 right-1'>
                 <MotionCloseX
                   withTranslate={true}
-                  size={16}
+                  size={14}
                   strokeWidth={1.5}
                   className='p-5'
                   onClick={closeDropdown}

@@ -7,7 +7,7 @@ import {
   MotionOverlay,
   MotionDropdown,
   MotionCloseX,
-} from '../header/AnimatedDropdown';
+} from '../shared/AnimatedDropdown';
 import Image from 'next/image';
 import {formatPrice} from '@/lib/helpers';
 
@@ -68,8 +68,8 @@ export function ProductListDropdown({
             <div className='absolute top-1.5 right-3'>
               <MotionCloseX
                 onClick={closeMenu}
-                size={16}
-                strokeWidth={1.6}
+                size={14}
+                strokeWidth={1.5}
                 className='p-5 cursor-pointer'
               />
             </div>

@@ -9,7 +9,7 @@ import {signOutAction} from '@/actions/auth';
 // import SpinningLogo from '../shared/SpinningLogo';
 import {motion} from 'framer-motion';
 import {AnimatePresence} from 'framer-motion';
-import {MotionCloseX} from './AnimatedDropdown';
+import {MotionCloseX} from '../shared/AnimatedDropdown';
 import {useSaveCurrentUrl} from '@/hooks/useLoginRedirect';
 import {useRouter} from 'next/navigation';
 

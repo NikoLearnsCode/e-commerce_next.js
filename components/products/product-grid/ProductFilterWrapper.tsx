@@ -145,7 +145,7 @@ export default function ProductFilterWrapper({
   return (
     <div className='relative text-xs sm:text-sm'>
       {isCategoryPage && genderCategoryTitle && (
-        <div className='flex  items-center flex-row px-5 sm:px-8 gap-1.5 pt-2 my-2'>
+        <div className='flex  items-center flex-row px-4 sm:px-8 gap-1.5 pt-2 my-2'>
           <Link
             href={`/c/${currentGender}`}
             className='flex items-center uppercase gap-2  font-medium text-gray-500'

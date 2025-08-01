@@ -175,7 +175,7 @@ function AccordionTrigger({
       aria-controls={contentId}
       tabIndex={0}
       className={twMerge(
-        'flex w-full justify-between items-center py-4 cursor-pointer',
+        'flex w-full justify-between items-center py-3 cursor-pointer',
         className
       )}
       onClick={() => toggleValue(value)}
@@ -189,7 +189,7 @@ function AccordionTrigger({
           className={`transition-transform duration-300 mr-2  ${
             isOpen ? 'rotate-180' : ''
           }`}
-          size={20}
+          size={22}
           strokeWidth={isOpen ? 1.5 : 1}
         />
       )}

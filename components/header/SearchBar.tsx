@@ -1,10 +1,10 @@
 'use client';
 
 import React, {useRef, useEffect, useState} from 'react';
-import {Search} from 'lucide-react';
+import {ArrowLeft, Search} from 'lucide-react';
 import {motion} from 'framer-motion';
 import {useRouter} from 'next/navigation';
-import {MotionCloseX} from './AnimatedDropdown';
+import {MotionCloseX} from '../shared/AnimatedDropdown';
 
 export default function SearchBar({
   isExpanded,
@@ -23,16 +23,15 @@ export default function SearchBar({
     }
   }, [isExpanded]); */
 
-    useEffect(() => {
-    if (!isExpanded && searchQuery !== '' ) {
-     setSearchQuery('')
+  useEffect(() => {
+    if (!isExpanded && searchQuery !== '') {
+      setSearchQuery('');
     }
   }, [isExpanded, searchQuery]);
 
   const handleEscape = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       setIsExpanded(false);
-
     }
   };
 
@@ -56,18 +55,30 @@ export default function SearchBar({
 
   return (
     <div
-      className={`flex items-center justify-end ${isExpanded ? 'w-full' : ''}`}
+      className={`flex items-center  justify-end ${isExpanded ? 'w-full' : ''}`}
     >
       {isExpanded ? (
         <>
           <form
             key='search-form'
-            className='flex items-center w-full relative'
+            name='search-form'
+            className='flex items-center w-full fixed top-0 right-0 h-14 md:h-auto z-50 md:relative bg-white pr-6 md:px-0'
             onSubmit={(e) => handleSubmit(e)}
           >
+            <button
+              className=' md:hidden p-4'
+              onClick={() => setIsExpanded(false)}
+            >
+              <ArrowLeft
+                size={22}
+                strokeWidth={1.25}
+                className='text-gray-500'
+              />
+            </button>
             <input
               ref={inputRef}
               type='text'
+              name='search'
               autoFocus={true}
               value={searchQuery}
               onKeyDown={(e) => {
@@ -78,16 +89,16 @@ export default function SearchBar({
               }}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder='SÖK'
-              className='w-full pl-0.5 pr-4 placeholder:text-sm md:placeholder:text-base  bg-white outline-none border-b border-gray-900 '
+              className='w-full pl-0.5 md:pr-4 placeholder:text-base  bg-white outline-none border-b border-gray-900 '
             />
-            <div className='absolute -right-3' aria-label='Close search'>
-              <MotionCloseX
-                onClick={() => setIsExpanded(false)}
-                size={12}
-                strokeWidth={2}
-                className='px-3 py-2'
-              />
-            </div>
+
+            <MotionCloseX
+              onClick={() => setIsExpanded(false)}
+              size={12}
+              strokeWidth={2}
+              className='px-3 py-2 absolute -right-3 hidden md:block'
+              aria-label='Close search'
+            />
           </form>
         </>
       ) : (
