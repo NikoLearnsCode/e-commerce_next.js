@@ -10,6 +10,7 @@ import {ChevronLeft, ChevronRight} from 'lucide-react';
 import {twMerge} from 'tailwind-merge';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import {useNavigatedHistory} from '@/context/NavigatedHistoryProvider';
 
 type ProductCardProps = {
   product: Product;
@@ -25,6 +26,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   const [isMobile, setIsMobile] = useState(false);
 
+  const {handleSaveNavigated} = useNavigatedHistory();
   const hasMultipleImages = product.images && product.images.length > 1;
   const prevButtonClass = `product-card-prev-${product.id}`;
   const nextButtonClass = `product-card-next-${product.id}`;
@@ -60,7 +62,9 @@ export default function ProductCard({
             href={`/${product.slug}`}
             className='block relative aspect-[7/9] h-full w-full '
             tabIndex={-1}
-            aria-hidden='true'
+            onClick={() =>
+              handleSaveNavigated({...product, image: product.images[0]})
+            }
           >
             <Image
               src={product.images[0]}
@@ -79,9 +83,7 @@ export default function ProductCard({
             href={`/${product.slug}`}
             className='outline-none focus:underline focus:underline-offset-2'
           >
-            <h2 className=' text-xs sm:text-sm font-medium '>
-              {product.name}
-            </h2>
+            <h2 className=' text-xs sm:text-sm font-medium '>{product.name}</h2>
           </Link>
           <p className='text-xs sm:text-sm'>{product.price} kr</p>
         </div>
@@ -118,9 +120,15 @@ export default function ProductCard({
                   {/* ⬇⬇ ENDA ÄNDRINGEN: gör slidelänken icke-tabbbar */}
                   <Link
                     href={`/${product.slug}`}
-                    className='relative block h-full w-full'
+                    className='relative block  h-full w-full'
                     tabIndex={-1}
                     aria-hidden='true'
+                    onClick={() =>
+                      handleSaveNavigated({
+                        ...product,
+                        image: product.images[0],
+                      })
+                    }
                   >
                     <Image
                       src={imgSrc}
@@ -172,6 +180,9 @@ export default function ProductCard({
           <Link
             href={`/${product.slug}`}
             className='block relative aspect-[7/9] h-full w-full'
+            onClick={() =>
+              handleSaveNavigated({...product, image: product.images[0]})
+            }
           >
             <Image
               src={product.images[0]}
@@ -189,11 +200,12 @@ export default function ProductCard({
       <div className='py-1.5 px-2 flex flex-col  '>
         <Link
           href={`/${product.slug}`}
+          onClick={() =>
+            handleSaveNavigated({...product, image: product.images[0]})
+          }
           className='outline-none focus:underline focus:underline-offset-2'
         >
-          <h2 className=' text-xs sm:text-sm font-medium'>
-            {product.name}
-          </h2>
+          <h2 className=' text-xs sm:text-sm font-medium'>{product.name}</h2>
         </Link>
         <p className=' text-xs sm:text-sm '>{product.price} kr</p>
       </div>

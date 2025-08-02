@@ -7,6 +7,8 @@ import {CartProvider} from '@/context/CartProvider';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import QueryProvider from '@/context/QueryProvider';
 
+import {NavigatedHistoryProvider} from '@/context/NavigatedHistoryProvider';
+
 const arimo = Arimo({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
@@ -48,8 +50,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <QueryProvider>
           <AuthProvider>
             <CartProvider>
-              <SpeedInsights />
-              {children}
+              <NavigatedHistoryProvider>
+                <SpeedInsights />
+                {children}
+              </NavigatedHistoryProvider>
             </CartProvider>
           </AuthProvider>
         </QueryProvider>

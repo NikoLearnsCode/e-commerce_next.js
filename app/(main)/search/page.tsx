@@ -34,9 +34,11 @@ export default async function SearchPage({searchParams}: Props) {
   if (!result.products || result.products.length === 0) {
     return (
       <div className='flex items-center justify-center min-h-[calc(100vh-400px)]'>
-        <div className='text-center'>
-          <p className='px-5 text-base md:text-lg italic'>
-            Inga produkter hittades för "{q}". Prova med andra sökord.
+        <div className='text-center max-w-full '>
+          <p className='px-6 text-base md:text-lg  break-words '>
+            Inga produkter hittades för söktermen <span className=' italic font-medium'>"{q}"</span>.
+            <br />
+            Prova med andra sökord.
           </p>
         </div>
       </div>

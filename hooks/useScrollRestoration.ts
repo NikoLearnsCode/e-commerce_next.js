@@ -1,4 +1,4 @@
-  'use client';
+'use client';
 
 import {useEffect, useRef} from 'react';
 import {usePathname, useSearchParams} from 'next/navigation';
@@ -42,7 +42,7 @@ export function useScrollRestoration() {
       const savedPosition = sessionStorage.getItem(scrollKey);
 
       if (!savedPosition || hasRestoredRef.current) {
-       /*  console.log(
+        /*  console.log(
           `No scroll position to restore or already restored. Key: ${scrollKey}`
         ); */
         return;
@@ -106,7 +106,7 @@ export function useScrollRestoration() {
                 `Scroll position verification failed. Expected: ${scrollY}, Actual: ${actualScrollY}`
               );
             } else {
-             /*  console.log(`Scroll position verified: ${actualScrollY}px`); */
+              /*  console.log(`Scroll position verified: ${actualScrollY}px`); */
             }
           }, 100);
         } else {

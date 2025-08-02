@@ -5,6 +5,7 @@ import {ArrowLeft, Search} from 'lucide-react';
 import {motion} from 'framer-motion';
 import {useRouter} from 'next/navigation';
 import {MotionCloseX} from '../shared/AnimatedDropdown';
+import {useNavigatedHistory} from '@/context/NavigatedHistoryProvider';
 
 export default function SearchBar({
   isExpanded,
@@ -16,12 +17,7 @@ export default function SearchBar({
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-
-  /*   useEffect(() => {
-    if (isExpanded && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isExpanded]); */
+  const {handleSaveSearch} = useNavigatedHistory();
 
   useEffect(() => {
     if (!isExpanded && searchQuery !== '') {
@@ -46,8 +42,10 @@ export default function SearchBar({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    const trimmedQuery = searchQuery.trim();
+    if (trimmedQuery) {
+      handleSaveSearch(trimmedQuery);
+      router.push(`/search?q=${encodeURIComponent(trimmedQuery)}`);
       setIsExpanded(false);
       setSearchQuery('');
     }
@@ -62,11 +60,11 @@ export default function SearchBar({
           <form
             key='search-form'
             name='search-form'
-            className='flex items-center w-full fixed top-0 right-0 h-14 md:h-auto z-50 md:relative bg-white pr-6 md:px-0'
-            onSubmit={(e) => handleSubmit(e)}
+            className='flex items-center w-full fixed top-0  right-0 h-16  lg:h-auto z-50 lg:relative bg-white pr-6 lg:px-0'
+            onSubmit={handleSubmit}
           >
             <button
-              className=' md:hidden p-4'
+              className=' lg:hidden p-4'
               onClick={() => setIsExpanded(false)}
             >
               <ArrowLeft
@@ -76,6 +74,7 @@ export default function SearchBar({
               />
             </button>
             <input
+              maxLength={100}
               ref={inputRef}
               type='text'
               name='search'
@@ -83,20 +82,19 @@ export default function SearchBar({
               value={searchQuery}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === 'Return') {
-                  e.preventDefault();
                   handleSubmit(e);
                 }
               }}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder='SÖK'
-              className='w-full pl-0.5 md:pr-4 placeholder:text-base  bg-white outline-none border-b border-gray-900 '
+              className='w-full py-0.5 lg:py-0 pl-0.5 lg:pr-4 lg:placeholder:text-base placeholder:text-lg bg-white outline-none border-b border-gray-900 '
             />
 
             <MotionCloseX
               onClick={() => setIsExpanded(false)}
               size={12}
               strokeWidth={2}
-              className='px-3 py-2 absolute -right-3 hidden md:block'
+              className='px-3 py-2 absolute -right-3 hidden lg:block'
               aria-label='Close search'
             />
           </form>

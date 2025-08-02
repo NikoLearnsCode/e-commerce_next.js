@@ -51,7 +51,6 @@ export const MotionDropdown = ({
   id = 'dropdown',
   position = 'left',
 }: MotionDropdownProps) => {
-
   const leftVariants: Variants = {
     hidden: {x: -100, opacity: 0, width: 0},
     visible: {
@@ -67,7 +66,6 @@ export const MotionDropdown = ({
     },
     exit: {x: -100, opacity: 0, width: 0, transition: {duration: 0.2}},
   };
-
 
   const rightVariants: Variants = {
     hidden: {x: 100, opacity: 0, width: 0},
@@ -85,9 +83,7 @@ export const MotionDropdown = ({
     exit: {x: 100, opacity: 0, width: 0, transition: {duration: 0.2}},
   };
 
-
   const topVariants: Variants = {
-
     hidden: {
       clipPath: 'inset(0% 0% 100% 0%)',
       opacity: 0,
@@ -97,19 +93,21 @@ export const MotionDropdown = ({
       clipPath: 'inset(0% 0% 0% 0%)',
       opacity: 1,
       transition: {
-        type: 'tween', 
+        type: 'tween',
         ease: 'easeOut',
         duration: 0.2,
+        delay: 0.1,
       },
     },
 
     exit: {
       clipPath: 'inset(0% 0% 100% 0%)',
-      opacity: 0,
+      opacity: 1,
       transition: {
         type: 'tween',
         ease: 'easeIn',
-        duration: 0.1,
+        duration: 0.2,
+        delay: 0.2,
       },
     },
   };
@@ -124,7 +122,6 @@ export const MotionDropdown = ({
       case 'top':
         return topVariants;
       default:
-
         return leftVariants;
     }
   };
@@ -166,6 +163,7 @@ interface MotionOverlayProps {
   id?: string;
   onClick?: () => void;
   ariaHidden?: boolean;
+  withDelay?: boolean;
 }
 
 export const MotionOverlay = ({
@@ -174,11 +172,18 @@ export const MotionOverlay = ({
   className = '',
   id = 'overlay',
   ariaHidden = true,
+  withDelay = false,
 }: MotionOverlayProps) => {
   const backdropVariants = {
     hidden: {opacity: 0},
-    visible: {opacity: 0.2, transition: {duration: 0.2}},
-    exit: {opacity: 0, transition: {duration: 0.2}},
+    visible: {
+      opacity: 0.2,
+      transition: {duration: 0.3, delay: withDelay ? 0.15 : 0},
+    },
+    exit: {
+      opacity: 0,
+      transition: {duration: 0.1, delay: withDelay ? 0.4 : 0},
+    },
   };
 
   return (
