@@ -83,11 +83,15 @@ export async function getInitialProducts({
 }: Params): Promise<Result> {
   const supabase = await createClient();
 
+  const sanitizedQuery = query
+    ? query.replace(/[^a-zA-Z0-9\såäöÅÄÖ]/g, ' ')
+    : '';
+
   // Helper that takes a builder object and returns the same with filters applied.
   const applyFilters = (b: any) => {
-    if (query?.trim()) {
+    if (sanitizedQuery.trim()) {
       b = b.or(
-        `name.ilike.%${query}%,category.ilike.%${query}%,gender.ilike.%${query}%,brand.ilike.%${query}%`
+        `name.ilike.%${sanitizedQuery.trim()}%,category.ilike.%${sanitizedQuery.trim()}%,gender.ilike.%${sanitizedQuery.trim()}%,brand.ilike.%${sanitizedQuery.trim()}%`
       );
     }
     if (category) b = b.eq('category', category);
