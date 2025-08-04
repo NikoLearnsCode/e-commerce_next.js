@@ -106,7 +106,7 @@ export const MotionDropdown = ({
       transition: {
         type: 'tween',
         ease: 'easeIn',
-        duration: 0.2,
+        duration: 0.1,
         delay: 0.2,
       },
     },
@@ -182,7 +182,7 @@ export const MotionOverlay = ({
     },
     exit: {
       opacity: 0,
-      transition: {duration: 0.1, delay: withDelay ? 0.4 : 0},
+      transition: {duration: 0.1, delay: withDelay ? 0.2 : 0},
     },
   };
 

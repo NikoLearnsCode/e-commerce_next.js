@@ -232,7 +232,7 @@ function AccordionContent({
           }}
           transition={{duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98]}}
         >
-          <div className={twMerge('flex flex-col gap-1 text-base', className)}>
+          <div className={twMerge('flex flex-col gap-1 ', className)}>
             {children}
           </div>
         </motion.section>

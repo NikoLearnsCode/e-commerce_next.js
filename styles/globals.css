@@ -2,7 +2,7 @@
 
 body {
   margin-top: var(--header-height);
-  font-family: var(--font-syne);
+
 }
 
 @plugin 'tailwindcss-animate';

@@ -156,14 +156,14 @@ export default function DesktopNav({navLinks}: DesktopNavProps) {
                   onClick={closeDropdown}
                 />
               </div>
-              <ul className='flex flex-col overflow-y-auto w-full h-full  space-y-5 '>
+              <ul className='flex flex-col overflow-y-auto w-full h-full  space-y-6 '>
                 {navLinks[hoveredIndex]?.subLinks?.map((subLink) => (
                   <li key={subLink.title}>
                     <Link
                       key={subLink.title}
                       href={subLink.href}
                       onClick={closeDropdown}
-                      className={`transition focus:border-black outline-none block not-first:pt-2 text-sm font-medium border-b border-transparent hover:border-b hover:border-black w-fit ${
+                      className={`transition focus:border-black outline-none block not-first:pt-2 text-sm  border-b border-transparent hover:border-b hover:border-black w-fit ${
                         subLink.title === 'ERBJUDANDEN'
                           ? 'text-red-600 hover:border-red-600 focus:border-red-600'
                           : ''

@@ -21,11 +21,11 @@ export default function FilterBar({
         className='flex items-center gap-2  hover:text-gray-700 transition-colors cursor-pointer'
       >
         <span
-          className={`font-medium text-sm sm:text-[15px] uppercase group ${hasActiveFilters ? 'text-black' : ''}`}
+          className={`font-medium text-sm sm:text-[15px]  uppercase group ${hasActiveFilters ? 'text-black' : ''}`}
         >
           Filtrera och ordna{' '}
           {hasActiveFilters && (
-            <span className='inline-flex  font-arimo items-center text-black '>
+            <span className='inline-flex items-center text-black '>
               ({activeFilterCount})
             </span>
           )}

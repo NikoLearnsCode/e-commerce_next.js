@@ -47,13 +47,13 @@ export default function SearchDropdown({
           >
             <div
               className={`overflow-y-auto px-5 lg:px-8 flex flex-col lg:flex-row ${
-                searchHistory.length > 0 ? 'gap-10' : 'gap-0 lg:gap-10'
+                navigatedProducts.length > 0 ? 'gap-10' : 'gap-0 lg:gap-10'
               }`}
             >
               {/* Placeholder for search with popular searches */}
-              {!searchHistory.length && !navigatedProducts.length && (
+              {!searchHistory.length && (
                 <div className=' w-full lg:max-w-80 '>
-                  <h2 className='text-sm  uppercase mb-6'>
+                  <h2 className='text-sm  uppercase mb-5'>
                     Andra har sökt efter
                   </h2>
                   <ul className='flex flex-wrap gap-3  '>
@@ -63,6 +63,7 @@ export default function SearchDropdown({
                           href={`/search?q=${encodeURIComponent(search)}`}
                           className='border flex border-gray-200 px-4 py-2     rounded-full bg-gray-50 text-xs  hover:border-black transition-colors duration-200  max-w-full'
                           onClick={() => {
+                            handleSaveSearch(search);
                             setIsSearchExpanded(false);
                           }}
                         >
@@ -73,10 +74,10 @@ export default function SearchDropdown({
                   </ul>
                 </div>
               )}
-              <div className='overflow-y-auto w-full lg:max-w-80 '>
-                {searchHistory.length > 0 && (
+              {searchHistory.length > 0 && (
+                <div className='overflow-y-auto w-full lg:max-w-80 '>
                   <>
-                    <div className='flex justify-between  mb-6'>
+                    <div className='flex justify-between mb-5'>
                       <h2 className='text-sm    uppercase '>
                         Tidigare sökningar
                       </h2>
@@ -109,18 +110,18 @@ export default function SearchDropdown({
                       ))}
                     </ul>
                   </>
-                )}
-              </div>
+                </div>
+              )}
 
               {navigatedProducts.length > 0 && (
                 <>
-                  <div className='flex-1'>
+                  <div className='flex-1 '>
                     <h2 className='text-sm  uppercase mb-4'>Nyligen besökta</h2>
-                    <div className='grid grid-cols-3 sm:grid-cols-5  lg:grid-cols-4 2xl:grid-cols-5  gap-0.5 lg:gap-1 overflow-y-auto'>
+                    <div className='grid  grid-cols-3 sm:grid-cols-5  lg:grid-cols-4 2xl:grid-cols-6  gap-0.5 lg:gap-1 overflow-y-auto'>
                       {displayedProducts.map((product) => (
                         <div
                           key={product.slug}
-                          className='relative aspect-[7/9] w-full h-full '
+                          className='relative aspect-[7/9]  w-full h-full '
                         >
                           <Link
                             href={`/${product.slug}`}

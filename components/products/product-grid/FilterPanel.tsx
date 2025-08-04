@@ -58,7 +58,7 @@ export default function FilterPanel({
           : '';
 
   return (
-    <AnimatePresence >
+    <AnimatePresence>
       {isOpen && (
         <>
           <MotionDropdown
@@ -69,13 +69,12 @@ export default function FilterPanel({
             <div className='flex flex-col h-full justify-between py-6 md:py-8 px-5 sm:px-10'>
               {/* --- Titel och stängknapp --- */}
               <div className='flex items-center justify-between mb-10'>
-                <h1 className='text-sm sm:text-base font-semibold uppercase font-syne '>
+                <h1 className='text-sm sm:text-[15px] font-medium uppercase  '>
                   Filtrera och ordna
                 </h1>
                 <MotionCloseX
                   onClick={onClose}
                   size={14}
-
                   strokeWidth={1.5}
                   className=' p-2.5'
                 />
@@ -88,11 +87,11 @@ export default function FilterPanel({
                   {sizes.length > 0 && (
                     <Accordion.Item
                       value='sizes'
-                      className='border-b font-medium'
+                      className='border-b '
                     >
                       <Accordion.Trigger>
                         <div className='flex flex-col'>
-                          <span className='text-sm sm:text-base'>Storlek</span>
+                          <span className='text-sm sm:text-base font-medium md:font-normal'>Storlek</span>
                           {selectedSizes.length > 0 && (
                             <span className='font-normal text-xs uppercase  text-gray-600 '>
                               {selectedSizes.join(', ')}
@@ -101,7 +100,7 @@ export default function FilterPanel({
                         </div>
                       </Accordion.Trigger>
                       <Accordion.Content>
-                        <div className='grid grid-cols-1 gap-3 text-base font-medium py-1'>
+                        <div className='grid grid-cols-1 gap-3 py-1'>
                           {sizes.map((size) => (
                             <CheckboxOption
                               key={size}
@@ -120,11 +119,11 @@ export default function FilterPanel({
                   {colors.length > 0 && (
                     <Accordion.Item
                       value='colors'
-                      className='border-b font-medium'
+                      className='border-b'
                     >
                       <Accordion.Trigger>
                         <div className='flex flex-col '>
-                          <span className='text-sm sm:text-base'>Färg</span>
+                          <span className='text-sm sm:text-base font-medium md:font-normal'>Färg</span>
                           {selectedColors.length > 0 && (
                             <span className='font-normal text-xs uppercase font-syne text-gray-600 '>
                               {selectedColors.join(', ')}
@@ -151,11 +150,11 @@ export default function FilterPanel({
                   {/* Sortering */}
                   <Accordion.Item
                     value='sort'
-                    className='border-b font-medium '
+                    className='border-b  '
                   >
                     <Accordion.Trigger>
                       <div className='flex flex-col'>
-                        <span className='text-sm relative sm:text-base'>
+                        <span className='text-sm relative sm:text-base font-medium md:font-normal'>
                           Sortera efter
                         </span>
                         {sortOrder && (
